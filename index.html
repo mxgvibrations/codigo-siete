@@ -8,7 +8,7 @@
 </head>
 <body>
 
-    <!-- Pantalla de bienvenida obligatoria para activar el Audio -->
+    <!-- Pantalla de bienvenida opcional para la versión Web -->
     <div id="splashScreen">
         <h1>¡Código 7!</h1>
         <p style="margin-bottom: 20px; color: #888;">Haz clic para activar el audio e iniciar el juego</p>
@@ -16,24 +16,20 @@
     </div>
 
     <div role="application" aria-label="Código 7">
-        
         <h1 id="gameTitle">¡Código 7!</h1>
-        
         <div class="instrucciones">
-            <p><strong>Configuración Inicial:</strong> Pulsa <strong>1</strong> para Lector de Pantalla o <strong>2</strong> para Voz del Sistema.</p>
-            <p><strong>Controles del Menú:</strong> Usa las <strong>Flechas Arriba y Abajo</strong> para navegar y <strong>Enter</strong> para seleccionar. Pulsa <strong>Escape</strong> para salir.</p>
-            <p><strong>Controles del Juego:</strong> Usa los números del <strong>1 al 7</strong> para adivinar la caja fuerte.</p>
+            <p><strong>Controles del Menú:</strong> Usa las <strong>Flechas Arriba y Abajo</strong> para navegar, <strong>Enter</strong> para seleccionar y <strong>Escape</strong> para volver o salir.</p>
+            <p id="gameInstructions"><strong>Controles del Juego:</strong> Usa las teclas numéricas para adivinar la combinación de la caja fuerte.</p>
         </div>
 
         <!-- Indicador visual del menú -->
         <div id="menuDisplay" class="menu-visual">Configurando accesibilidad...</div>
-        
         <div id="hud" style="display:none;">Puntuación: 0 | Tiempo: 60.0s</div>
 
         <!-- Consola receptora del teclado -->
         <div id="gameCanvas" class="game-zone" tabindex="0" aria-label="Game: Aplicación"></div>
 
-        <!-- Contenedor pasivo por accesibilidad estructural (Tu caja aria-live) -->
+        <!-- Contenedor pasivo por accesibilidad estructural -->
         <div id="screenReaderBox" class="sr-only" aria-live="assertive" aria-atomic="true"></div>
 
     </div>

@@ -1,0 +1,65 @@
+
+---
+
+ 📜 Notas de la Versión v1.1.2 — ¡Código 7!
+
+¡Nos alegra presentar la actualización v1.1.1 de ¡Código 7! Esta versión incluye una reestructuración completa en la jugabilidad, un rebalanceo conceptual en la mecánica de tiempo, grandes mejoras de accesibilidad para lectores de pantalla (NVDA/JAWS) y SAPI, y un nuevo flujo interactivo al finalizar cada atraco.
+
+---
+
+ 🚀 Nuevas Características e Inclusiones
+
+Nuevo Modo Historia por Nivel de Respuesta Policial:
+Se ha reemplazado el temporizador frenético por caja por un sistema global de llegada de patrullas, donde cada banco define la prioridad de la alerta:
+1. Banco Pequeño: Prioridad baja. La patrulla tarda 3 minutos (180s) en responder. Teclado del 1 al 5 y clave simple (ideal para acostumbrarse al oído).
+2. Banco Gran Ciudad: Prioridad media. La patrulla tarda 2 minutos (120s) en responder. Teclado del 1 al 7 y clave simple.
+3. La Reserva Federal: Alerta roja de máxima prioridad. Despliegue táctico en 1 minuto (60s). Teclado del 0 al * con secuencias de clave doble.
+
+
+* Modo Supervivencia:
+Un modo de juego libre e intenso donde comienzas con 2 minutos en el reloj. Cada caja abierta con éxito otorga 10 segundos extra de huida para resistir la persecución tanto como puedas.
+* Pantalla de Resumen de Fin de Atraco Interactiva:
+Al concluir una partida (por arresto o agotarse el tiempo), el juego no te expulsa al menú. Ahora se abre una pantalla de resumen en la que puedes:
+ Escuchar el resultado detallado de tu desempeño.
+Presionar Enter o Espacio: Repetir el reporte de voz en cualquier momento.
+ Presionar C: Copiar todas las estadísticas de la partida directamente al portapapeles de tu sistema.
+Presionar Escape: Volver al menú principal cuando desees.
+
+
+Métricas y Estadísticas Extendidas:
+El juego ahora registra y te reporta: puntuación final, cajas fuertes abiertas, cajas perdidas, intentos totales realizados e intentos fallidos.
+
+---
+
+ ⚖️ Rebalanceo de Dificultad, Ritmo y Tensión
+
+ Nuevo Concepto de Tiempo (Huida vs. Conteo Rápido):
+Se eliminaron los temporizadores individuales cortos por caja que provocaban derrotas prematuras. Ahora cuentas con el tiempo total real de respuesta policial para saquear cuantas cajas puedas antes de que el edificio sea rodeado.
+ Recompensas y Penalizaciones por Error:
+ Abrir una caja fuerte otorga 5 segundos de margen extra en Historia y 10 segundos en Supervivencia.
+ Erróneamente presionar un dígito equivocado descuenta 1.5 segundos (1500ms) por la demora cometida.
+ Echar a perder una caja fuerte (agotar las 3 oportunidades) restará 5 segundos (5000ms) del tiempo de escape.
+
+
+Escalado Proporcional de la Atmósfera Sonora:
+Las sirenas policiales, la música ambiental de tensión (`gm1`, `gm2`, `gm3`) y la frecuencia cardíaca escalan progresivamente a lo largo de los 3, 2 o 1 minutos de la partida, elevando la adrenalina a medida que la policía acorta la distancia.
+
+---
+
+ 🛠️ Correcciones de Errores y Accesibilidad
+
+ Sincronización Cinemática y Corrección de `delta`:
+Solucionado: El tiempo de la cinemática de introducción (`g_starting`) ya no se descuenta de la partida real. La jugabilidad e inicio del reloj ahora se sincronizan exactamente en el milisegundo en que termina la voz o audio introductorio.
+Se extendió el temporizador de respaldo (fallback) a 20 segundos para evitar arranques accidentales en intros largas.
+
+
+* Sincronización de Audios Dramáticos de Arresto:
+Solucionado: Las escenas sonoras de captura/muerte (`g_death11` a `g_death26`) ya no sufren cortes ni interrupciones antes de tiempo. El juego aguarda exactamente a que finalice la reproducción del audio (`onended`) antes de activar los anuncios del sintetizador.
+Fluidez en Lectores de Pantalla y TTS:
+Se corrigió el conflicto en los callbacks de lectura que provocaba la cancelación abrupta del mensaje inicial al navegar por los menús. Se añadió un retardo de refresco (`screenReaderBox`) para garantizar que lectores como NVDA o JAWS lean cada opción de menú o estadística sin saltarse información.
+Gestión de Foco:
+Implementación de la función `ensureCanvasFocus()` para mantener siempre el foco en el lienzo del juego tras cambiar de pantalla o menú, evitando que se pierdan las entradas del teclado.
+
+---
+
+¡Gracias por jugar a **¡Código 7!** y por ayudarnos a hacer este audiojuego cada vez más accesible, equilibrado y emocionante!
